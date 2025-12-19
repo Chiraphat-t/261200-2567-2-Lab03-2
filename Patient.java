@@ -17,7 +17,7 @@ public class Patient {
         if (nbloodGroup == "A" ||nbloodGroup == "O" ||nbloodGroup == "B" ||nbloodGroup == "AB" ){this.bloodGroup = nbloodGroup;}
         else {
             this.bloodGroup="-";
-            System.out.println("invalid");}
+            System.out.println("invalid bloodGroup");}
         this.phoneNumber = phoneNumber;
 
     }
