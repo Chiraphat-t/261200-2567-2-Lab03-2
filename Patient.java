@@ -1,18 +1,23 @@
 public class Patient {
-    private int id,birthYear,phoneNumber;
-    private String name,bloodGroup;
+    private int id,birthYear;
+    private String name,bloodGroup,phoneNumber;
     private double height,weight;
 
-    public Patient(int id ,String name,int nbirthYear, double nheight,double nweight,String bloodGroup,int phoneNumber){
+    public Patient(int id ,String name,int nbirthYear, double nheight,double nweight,String nbloodGroup,String phoneNumber){
 
         this.id = id;
         this.name = name;
         if (nbirthYear>0){this.birthYear = nbirthYear;}
+        else if (nbirthYear<=0){System.out.println("invalid year");}
         if (nheight>0){this.height = nheight;}
-        else if (nheight<0){System.out.println("invalid");}
+        else if (nheight<=0){System.out.println("invalid height");}
         if (nweight>0){this.weight = nweight;}
-        else if (nweight<0){System.out.println("invalid");}
-        this.bloodGroup = bloodGroup;
+        else if (nweight<=0){System.out.println("invalid weight");}
+
+        if (nbloodGroup == "A" ||nbloodGroup == "O" ||nbloodGroup == "B" ||nbloodGroup == "AB" ){this.bloodGroup = nbloodGroup;}
+        else {
+            this.bloodGroup="-";
+            System.out.println("invalid");}
         this.phoneNumber = phoneNumber;
 
     }
@@ -22,10 +27,13 @@ public class Patient {
     public int getBirthYear(){return this.birthYear;}
     public double getHeight(){return this.height;}
     public double getWeight(){return this.weight;}
-    public int getAge(int currentYear){return (currentYear-this.birthYear);}
+    public int getAge(int currentYear){
+        if (birthYear>0){return (currentYear-this.birthYear);}
+        else {return 0;}
+    }
 
     public String getBloodGroup(){return this.bloodGroup;}
-    public int getPhoneNumber(){return  this.phoneNumber;}
+    public String getPhoneNumber(){return  this.phoneNumber;}
     public double getBMI(){
         if (weight<=0 || height<=0){return 0;}
         else {return this.weight/(this.height*this.height/10000);}
